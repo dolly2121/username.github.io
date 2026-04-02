@@ -338,16 +338,22 @@
         @media (max-width: 1024px) {
             .hero-content {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1.5rem;
             }
 
             .hero-text-photo {
                 grid-template-columns: 1fr;
             }
 
+            .mascot-container {
+                justify-content: center;
+                min-width: auto;
+                padding: 0;
+            }
+
             .mascot {
                 width: 150px;
-                height: 210px;
+                height: 200px;
             }
         }
 
@@ -368,12 +374,12 @@
                 left: 0;
                 width: 100%;
                 height: 100vh;
-                background: rgba(15, 23, 42, 0.98);
-                backdrop-filter: blur(20px);
+                height: 100dvh;
+                background: #0f172a;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                gap: 2.5rem;
+                gap: 3rem;
                 opacity: 0;
                 visibility: hidden;
                 transition: all 0.3s ease;
@@ -402,17 +408,16 @@
             nav ul.active li:nth-child(4) { transition-delay: 0.4s; }
 
             nav ul li a {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
                 font-weight: 600;
                 color: var(--text-primary);
-                padding: 0.5rem 1rem;
-                border-bottom: 2px solid transparent;
+                padding: 1rem 2rem;
+                display: block;
                 transition: all 0.3s ease;
             }
 
             nav ul li a:hover {
                 color: var(--accent);
-                border-bottom-color: var(--accent);
             }
 
             /* Hero Section Mobile */
@@ -426,18 +431,19 @@
                 gap: 1rem;
             }
 
-            /* Show mascot on mobile but smaller */
+            /* Show mascot on mobile - smaller */
             .mascot-container {
-                display: flex;
+                display: flex !important;
                 justify-content: center;
                 padding: 0;
                 min-width: auto;
                 order: 1;
+                overflow: visible;
             }
 
             .mascot {
-                width: 120px;
-                height: 160px;
+                width: 100px;
+                height: 140px;
             }
 
             /* Hero text and photo layout for mobile */
@@ -612,6 +618,21 @@
 
             section {
                 padding: 1.5rem 5% !important;
+            }
+        }
+
+        /* Mobile Portrait - ensure mascot shows */
+        @media (max-width: 768px) and (orientation: portrait) {
+            .mascot-container {
+                display: flex !important;
+                justify-content: center;
+                padding: 0;
+                min-width: auto;
+            }
+
+            .mascot {
+                width: 100px;
+                height: 140px;
             }
         }
 
