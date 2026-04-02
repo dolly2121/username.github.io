@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dolly Sahu - AI Engineer & Data Engineer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #7c3aed;
+            --primary-light: #a78bfa;
+            --secondary: #06b6d4;
+            --dark-bg: #0f172a;
+            --dark-secondary: #1e293b;
+            --dark-tertiary: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --accent: #06b6d4;
+            --success: #10b981;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            min-height: auto;
+            display: flex;
+            align-items: center;
+            padding: 2rem 5%;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%);
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 1.5rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Mascot Styles */
+        .mascot-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1200px;
+        }
+
+        .mascot {
+            width: 140px;
+            height: 196px;
+            filter: drop-shadow(0 8px 20px rgba(124, 58, 237, 0.3));
+            animation: mascot-bounce 6s ease-in-out infinite;
+        }
+
+        @keyframes mascot-bounce {
+            0%, 100% { transform: translateY(0px); }
+            48% { transform: translateY(-10px); }
+            56% { transform: translateY(0px); }
+        }
+
+        .mascot-body {
+            transform-origin: 100px 140px;
+            animation: body-rotate-and-move 12s ease-in-out infinite;
+            perspective: 1000px;
+        }
+
+        @keyframes body-rotate-and-move {
+            /* Start on left and ROTATE immediately (0-8%) */
+            0% {
+                transform: translateX(-60px) rotateY(0deg);
+            }
+            8% {
+                transform: translateX(-60px) rotateY(180deg);
+            }
+            /* Wave while rotated (8-48%) */
+            48% {
+                transform: translateX(-60px) rotateY(180deg);
+            }
+            /* Move to the right (48-56%) */
+            56% {
+                transform: translateX(20px) rotateY(180deg);
+            }
+            /* Hold position on right pointing at photo (56-100%) */
+            100% {
+                transform: translateX(20px) rotateY(180deg);
+            }
+        }
+
+        .pointing-arm {
+            animation: left-arm-wave-then-point 12s ease-in-out infinite;
+            transform-origin: 50px 140px;
+        }
+
+        @keyframes left-arm-wave-then-point {
+            /* Arm still while rotating (0-8%) */
+            0% {
+                transform: rotate(0deg);
+            }
+            8% {
+                transform: rotate(0deg);
+            }
+            
+            /* Wave 1 - left arm up and down (8-16%) */
+            8% {
+                transform: rotate(0deg);
+            }
+            16% {
+                transform: rotate(30deg);
+            }
+            24% {
+                transform: rotate(-30deg);
+            }
+            
+            /* Wave 2 (24-32%) */
+            32% {
+                transform: rotate(30deg);
+            }
+            40% {
+                transform: rotate(-30deg);
+            }
+            
+            /* Wave 3 (40-48%) */
+            48% {
+                transform: rotate(30deg);
+            }
+            56% {
+                transform: rotate(-30deg);
+            }
+            
+            /* Return to center and prepare to point (56-64%) */
+            64% {
+                transform: rotate(0deg);
+            }
+            
+            /* Point to the right at photo and hold for remaining time (64-100%) */
+            72% {
+                transform: rotate(45deg);
+            }
+            80% {
+                transform: rotate(45deg);
+            }
+            88% {
+                transform: rotate(45deg);
+            }
+            100% {
+                transform: rotate(45deg);
+            }
+        }
+
+        /* Hero Text and Photo Layout */
+        .hero-text-photo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .hero-photo {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            order: 1;
+        }
+
+        .hero-photo img {
+            width: 260px;
+            height: 260px;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            box-shadow: 0 15px 40px rgba(6, 182, 212, 0.3);
+            animation: photo-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes photo-pulse {
+            0%, 100% { 
+                box-shadow: 0 20px 60px rgba(6, 182, 212, 0.3);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 25px 70px rgba(124, 58, 237, 0.4);
+                transform: scale(1.02);
+            }
+        }
+
+        .hero-text {
+            order: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+            color: var(--text-primary);
+        }
+
+        .hero-text h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+
+        .hero-text h2 .gradient {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-intro {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-text-photo {
+                grid-template-columns: 1fr;
+            }
+
+            .mascot {
+                width: 150px;
+                height: 210px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero-photo img {
+                width: 250px;
+                height: 250px;
+            }
+
+            .mascot {
+                width: 120px;
+                height: 170px;
+            }
+        }
+
+        /* Expertise Section */
+        .expertise-section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: -100px auto 5rem auto;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.05) 0%, rgba(6, 182, 212, 0.05) 100%);
+            border-radius: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .expertise-card {
+            background: var(--dark-secondary);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .expertise-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(6, 182, 212, 0.2);
+        }
+
+        .expertise-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: icon-float 3s ease-in-out infinite;
+        }
+
+        .expertise-card:nth-child(1) .expertise-icon {
+            animation-delay: 0s;
+        }
+
+        .expertise-card:nth-child(2) .expertise-icon {
+            animation-delay: 0.2s;
+        }
+
+        .expertise-card:nth-child(3) .expertise-icon {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes icon-float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .expertise-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .expertise-list {
+            list-style: none;
+            text-align: left;
+        }
+
+        .expertise-list li {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+            line-height: 1.6;
+        }
+
+        .expertise-list li:last-child {
+            border-bottom: none;
+        }
+
+        .expertise-list li:before {
+            content: "→ ";
+            color: var(--primary-light);
+            margin-right: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.8rem 1.6rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            pointer-events: auto;
+            z-index: 10;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(6, 182, 212, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(-1px);
+        }
+
+        /* Sections */
+        section {
+            padding: 2.5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        #projects {
+            padding: 2rem 5%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .section-title .gradient {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 1200px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .skill-card {
+            background: var(--dark-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slide-up 0.6s ease forwards;
+        }
+
+        @keyframes slide-up {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .skill-card:nth-child(1) { animation-delay: 0.1s; }
+        .skill-card:nth-child(2) { animation-delay: 0.2s; }
+        .skill-card:nth-child(3) { animation-delay: 0.3s; }
+        .skill-card:nth-child(4) { animation-delay: 0.4s; }
+        .skill-card:nth-child(5) { animation-delay: 0.5s; }
+
+        .skill-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(124, 58, 237, 0.25);
+        }
+
+        .skill-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+
+        .skill-tag {
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--primary-light);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(124, 58, 237, 0.4);
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: var(--dark-secondary);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.2);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #1a5f6f 0%, #0d3d4a 100%);
+            padding: 2rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #06b6d4;
+        }
+
+        .project-role {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .project-body {
+            padding: 2rem;
+        }
+
+        .project-description {
+            color: #cbd5e1;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .project-impact {
+            background: rgba(6, 182, 212, 0.1);
+            border-left: 4px solid #06b6d4;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .problem-section,
+        .solution-section {
+            background: rgba(6, 182, 212, 0.05);
+            border-left: 3px solid var(--accent);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+
+        .section-heading {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .section-content {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Project Card with Arrows Layout */
+        .project-card-with-arrows {
+            display: grid;
+            grid-template-columns: 1fr 0.8fr 1fr;
+            gap: 1.5rem;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            background: transparent;
+            border: none;
+            padding: 0;
+        }
+
+        .project-card-with-arrows .project-card {
+            margin-bottom: 0;
+        }
+
+        .arrows-connector {
+            width: 100%;
+            height: 100%;
+            min-height: 250px;
+        }
+
+        /* Individual arrow animations */
+        .arrow-1 {
+            opacity: 0;
+            animation: arrow-fade 0.8s ease forwards;
+            animation-delay: 0.2s;
+        }
+
+        .arrow-2 {
+            opacity: 0;
+            animation: arrow-fade 0.8s ease forwards;
+            animation-delay: 0.5s;
+        }
+
+        .arrow-3 {
+            opacity: 0;
+            animation: arrow-fade 0.8s ease forwards;
+            animation-delay: 0.8s;
+        }
+
+        @keyframes arrow-fade {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .project-labels {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .label-box {
+            background: linear-gradient(135deg, #1a5f6f 0%, #0d3d4a 100%);
+            border: 2px solid #06b6d4;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            font-weight: 700;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: label-slide-in 0.6s ease forwards;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            min-height: 80px;
+            justify-content: center;
+        }
+
+        .label-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .label-detail {
+            font-weight: 400;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            line-height: 1.5;
+        }
+
+        .label-box:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .label-box:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .label-box:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes label-slide-in {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .label-box:hover {
+            background: linear-gradient(135deg, #2a7a96 0%, #1a5a7a 100%);
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3);
+        }
+
+        @media (max-width: 1200px) {
+            .project-card-with-arrows {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .arrows-connector {
+                display: none;
+            }
+
+            .project-labels {
+                height: auto;
+                grid-column: 1;
+            }
+
+            .label-box {
+                padding: 1rem;
+                font-size: 0.95rem;
+            }
+        }
+
+        .project-card {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+
+        .tech-tag {
+            background: rgba(6, 182, 212, 0.2);
+            border: 1px solid var(--accent);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--accent);
+            display: inline-block;
+            margin: 0.3rem 0.3rem 0.3rem 0;
+            white-space: nowrap;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Demo Button */
+        .demo-btn {
+            background: linear-gradient(135deg, #00ff88 0%, #00ffff 50%, #ff006e 100%);
+            color: #000;
+            border: 2px solid #00ff88;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            animation: neon-pulse 2s infinite;
+            box-shadow: 0 0 10px #00ff88, 0 0 20px #00ffff, inset 0 0 10px rgba(0, 255, 136, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes neon-pulse {
+            0% {
+                box-shadow: 0 0 10px #00ff88, 0 0 20px #00ffff, inset 0 0 10px rgba(0, 255, 136, 0.3), 0 0 30px rgba(0, 255, 136, 0.5);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 20px #00ff88, 0 0 40px #00ffff, inset 0 0 20px rgba(0, 255, 136, 0.5), 0 0 50px rgba(0, 255, 136, 0.8);
+                transform: scale(1.08);
+            }
+            100% {
+                box-shadow: 0 0 10px #00ff88, 0 0 20px #00ffff, inset 0 0 10px rgba(0, 255, 136, 0.3), 0 0 30px rgba(0, 255, 136, 0.5);
+                transform: scale(1);
+            }
+        }
+
+        .demo-btn:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 0 30px #00ff88, 0 0 60px #00ffff, inset 0 0 20px rgba(0, 255, 136, 0.6), 0 0 80px rgba(255, 0, 110, 0.8);
+            animation: neon-pulse 1s infinite;
+            background: linear-gradient(135deg, #00ffff 0%, #ff006e 50%, #00ff88 100%);
+        }
+
+        .demo-btn:active {
+            transform: translateY(-1px) scale(1.05);
+            box-shadow: 0 0 40px #00ff88, 0 0 80px #ff006e;
+        }
+
+        /* Video Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s ease;
+            overflow: auto;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: #0f172a;
+            margin: 5% auto;
+            padding: 2rem;
+            border: 2px solid #06b6d4;
+            width: 85%;
+            max-width: 1000px;
+            border-radius: 12px;
+            animation: slideDown 0.3s ease;
+            box-shadow: 0 20px 60px rgba(6, 182, 212, 0.3);
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #06b6d4;
+            padding-bottom: 1rem;
+        }
+
+        .modal-title {
+            color: #06b6d4;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #06b6d4;
+            transition: all 0.2s ease;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            color: #ffffff;
+            transform: scale(1.2);
+        }
+
+        .video-container {
+            width: 100%;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                padding: 1rem;
+            }
+
+            .modal-title {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .experience-item {
+            background: var(--dark-secondary);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            position: relative;
+        }
+
+        .experience-item:hover {
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.2);
+        }
+
+        .experience-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-company {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-date {
+            color: var(--primary-light);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item ul {
+            margin-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .experience-item li {
+            margin-bottom: 0.7rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%);
+            border-radius: 12px;
+            padding: 4rem 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .contact-item {
+            padding: 1.5rem;
+            background: var(--dark-secondary);
+            border-radius: 8px;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .contact-item a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary-light);
+        }
+
+        .contact-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-secondary);
+            padding: 2rem 5%;
+            text-align: center;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image img {
+                width: 250px;
+                height: 250px;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Video Demo Modal -->
+    <div id="demoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">🎬 Project Demo</div>
+                <button class="close-btn" onclick="closeDemoModal()">&times;</button>
+            </div>
+            <div class="video-container">
+                <video id="demoVideo" controls autoplay style="width: 100%; height: auto;">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Dolly Sahu</div>
+        <ul>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section with Animated Mascot -->
+    <section class="hero">
+        <div class="hero-content">
+            <!-- Animated Mascot -->
+            <div class="mascot-container">
+                <svg class="mascot" viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+                    <g class="mascot-body">
+                        <!-- Head -->
+                        <rect x="40" y="20" width="120" height="100" rx="12" fill="#06b6d4" opacity="0.15" stroke="#06b6d4" stroke-width="2"/>
+                        <circle cx="70" cy="55" r="8" fill="#06b6d4"/>
+                        <circle cx="130" cy="55" r="8" fill="#06b6d4"/>
+                        <path d="M 75 80 Q 100 95 125 80" stroke="#06b6d4" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        
+                        <!-- Body -->
+                        <rect x="50" y="130" width="100" height="90" rx="8" fill="#7c3aed" opacity="0.15" stroke="#7c3aed" stroke-width="2"/>
+                        <circle cx="75" cy="160" r="6" fill="#06b6d4"/>
+                        <circle cx="125" cy="160" r="6" fill="#06b6d4"/>
+                        
+                        <!-- Left Arm (Animated - Waves and Points) -->
+                        <g class="pointing-arm">
+                            <line x1="50" y1="140" x2="10" y2="140" stroke="#06b6d4" stroke-width="8" stroke-linecap="round"/>
+                            <circle cx="5" cy="140" r="7" fill="#06b6d4"/>
+                        </g>
+                        
+                        <!-- Right Arm (Static - down) -->
+                        <g>
+                            <line x1="150" y1="140" x2="180" y2="180" stroke="#7c3aed" stroke-width="8" stroke-linecap="round"/>
+                            <circle cx="185" cy="185" r="6" fill="#7c3aed"/>
+                        </g>
+                        
+                        <!-- Legs -->
+                        <line x1="80" y1="220" x2="75" y2="260" stroke="#7c3aed" stroke-width="8" stroke-linecap="round"/>
+                        <line x1="120" y1="220" x2="125" y2="260" stroke="#7c3aed" stroke-width="8" stroke-linecap="round"/>
+                        <circle cx="75" cy="265" r="5" fill="#7c3aed"/>
+                        <circle cx="125" cy="265" r="5" fill="#7c3aed"/>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Hero Text and Photo -->
+            <div class="hero-text-photo">
+                <div class="hero-photo">
+                    <img src="Dolly.PNG" alt="Dolly Sahu" id="profileImg">
+                </div>
+                <div class="hero-text">
+                    <h1>Dolly Sahu</h1>
+                    <h2>AI Engineer & <span class="gradient">Data Engineer</span></h2>
+                    <p class="hero-intro">Building intelligent solutions that solve real-world problems | Master of AI from Monash | 3+ years industry experience</p>
+                    <div class="cta-buttons">
+                        <a href="#projects" class="btn btn-primary">View My Work ↓</a>
+                        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Areas of Expertise Section -->
+    <section id="expertise" class="expertise-section">
+        <h2 class="section-title">Areas of <span class="gradient">Expertise</span></h2>
+        <div class="expertise-grid">
+            <div class="expertise-card">
+                <div class="expertise-icon">💾</div>
+                <h3>Data Engineering (BFSI)</h3>
+                <ul class="expertise-list">
+                    <li>SAP ECC to S/4HANA migration at TCS</li>
+                    <li>Legacy COBOL system to S/4HANA migration at Accenture</li>
+                    <li>14M+ financial records processing with zero data loss</li>
+                    <li>155+ ETL batches monitored & optimized daily</li>
+                    <li>70+ production-grade ETL batch jobs developed with SAP BODS</li>
+                    <li>100+ HANA calculation views maintained & optimized</li>
+                    <li>40+ annual production deployments with full documentation</li>
+                    <li>Enterprise data governance for sales, finance & insurance domains</li>
+                </ul>
+            </div>
+
+            <div class="expertise-card">
+                <div class="expertise-icon">🤖</div>
+                <h3>AI/ML (Insurance | Health | CS)</h3>
+                <ul class="expertise-list">
+                    <li>Machine learning eligibility engine for world's largest insurer</li>
+                    <li>RAG systems & LLM pipelines for customer support automation</li>
+                    <li>Eliminated 30+ hours of manual document lookup weekly</li>
+                    <li>Predictive modeling for arthritis risk assessment (76% accuracy)</li>
+                    <li>Computer vision attendance system enabling instant class snapshots</li>
+                    <li>Advanced statistical modeling for healthcare applications</li>
+                </ul>
+            </div>
+
+            <div class="expertise-card">
+                <div class="expertise-icon">⚙️</div>
+                <h3>Automation (Insurance & Industrial)</h3>
+                <ul class="expertise-list">
+                    <li>Workflow automation for monthly report generation (10+ hours saved)</li>
+                    <li>Intelligent document parsing from 35+ employee shared drives</li>
+                    <li>Automated invoice processing (handwritten & digital) to PostgreSQL for Transport management system</li>
+                    <li>200+ batch job orchestration using JavaScript & Control-M</li>
+                    <li>CI/CD pipeline automation for production deployments</li>
+                    <li>Operational excellence through intelligent automation</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Featured <span class="gradient">Projects</span></h2>
+        <p class="section-subtitle">A showcase of AI/ML and automation projects demonstrating practical applications that deliver measurable business value</p>
+        
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card-with-arrows">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">🤖 ApplianceSense RAG</div>
+                        <div class="project-role">AI Engineer @ A8 Consulting</div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-description">
+                            Production-grade RAG pipeline automating document lookup across 1,500+ technical manuals for warranty support agents.
+                        </div>
+                        <div class="project-impact">
+                            ✨ 80% reduction in manual document lookup time | 75% accuracy achieved
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">LangChain</span>
+                            <span class="tech-tag">ChromaDB</span>
+                            <span class="tech-tag">Azure OpenAI</span>
+                            <span class="tech-tag">OCR</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                        <button class="demo-btn" onclick="openDemoModal('Appliance_Support_Assistant_Demo.mp4')">▶ Demo</button>
+                    </div>
+                </div>
+
+                <!-- Arrows in the middle -->
+                <svg class="arrows-connector" viewBox="0 0 150 300" preserveAspectRatio="none">
+                    <!-- Arrow 1: Top - straight diagonal from origin -->
+                    <path class="arrow-1" stroke-dasharray="200" d="M 10 150 L 125 75" stroke="#1a7a94" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <polygon class="arrow-1" points="140,60 125,75 130,65 125,80" fill="#1a7a94"/>
+                    
+                    <!-- Arrow 2: Middle - straight horizontal from origin -->
+                    <path class="arrow-2" stroke-dasharray="200" d="M 10 150 L 125 150" stroke="#6d52a8" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <polygon class="arrow-2" points="140,150 115,135 125,150 115,165" fill="#6d52a8"/>
+                    
+                    <!-- Arrow 3: Bottom - straight diagonal from origin -->
+                    <path class="arrow-3" stroke-dasharray="200" d="M 10 150 L 125 225" stroke="#5039a8" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <polygon class="arrow-3" points="140,240 125,225 130,235 125,220" fill="#5039a8"/>
+                </svg>
+
+                <!-- Right side labels -->
+                <div class="project-labels">
+                    <div class="label-box">
+                        <div class="label-title">The Problem</div>
+                        <div class="label-detail">Warranty agents manually searching 1,500+ PDFs, spending 30+ hours weekly on document lookup</div>
+                    </div>
+                    <div class="label-box">
+                        <div class="label-title">What I built and how</div>
+                        <div class="label-detail">OCR pipeline + ChromaDB semantic search + Azure OpenAI GPT-4 for natural language responses</div>
+                    </div>
+                    <div class="label-box">
+                        <div class="label-title">Key impact</div>
+                        <div class="label-detail">80% lookup time reduction | 75% accuracy | 30+ hours weekly saved</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card-with-arrows">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">💊 ArthritEase Platform</div>
+                        <div class="project-role">AI Engineer Lead @ Monash</div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-description">
+                            Personalized health platform for arthritis patients with conversational AI assistant and weather-based pain management.
+                        </div>
+                        <div class="project-impact">
+                            ✨ 76% accuracy predictive modeling | Real-time weather integration | Serverless architecture
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Generative AI</span>
+                            <span class="tech-tag">AWS Lambda</span>
+                            <span class="tech-tag">Weather APIs</span>
+                            <span class="tech-tag">ML Algorithms</span>
+                        </div>
+                        <button class="demo-btn" onclick="openDemoModal('ArthritEase_Demo.mp4')">▶ Demo</button>
+                    </div>
+                </div>
+
+                <svg class="arrows-connector" viewBox="0 0 150 300" preserveAspectRatio="none">
+                    <path class="arrow-1" stroke-dasharray="200" d="M 10 150 L 125 75" stroke="#1a7a94" stroke-width="18" fill="none" stroke-linecap="round"/>
+                    <polygon class="arrow-1" points="140,60 125,75 130,65 125,80" fill="#1a7a94"/>
+                    <path class="arrow-2" stroke-dasharray="200" d="M 10 150 L 125 150" stroke="#6d52a8" stroke-width="18" fill="none" stroke-linecap="round"/>
+                    <polygon class="arrow-2" points="140,150 115,135 125,150 115,165" fill="#6d52a8"/>
+                    <path class="arrow-3" stroke-dasharray="200" d="M 10 150 L 125 225" stroke="#5039a8" stroke-width="18" fill="none" stroke-linecap="round"/>
+                    <polygon class="arrow-3" points="140,240 125,225 130,235 125,220" fill="#5039a8"/>
+                </svg>
+
+                <div class="project-labels">
+                    <div class="label-box">
+                        <div class="label-title">The Problem</div>
+                        <div class="label-detail">Existing Arthritis apps give generic information without considering real-time situation, pain level, demography, or lifestyle</div>
+                    </div>
+                    <div class="label-box">
+                        <div class="label-title">What I built and how</div>
+                        <div class="label-detail">Conversational AI assistant + weather API integration + predictive ML model on AWS Lambda</div>
+                    </div>
+                    <div class="label-box">
+                        <div class="label-title">Key impact</div>
+                        <div class="label-detail">76% prediction accuracy | Real-time weather insights | Serverless architecture</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card-with-arrows">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">📊 SAP S/4HANA Migration</div>
+                        <div class="project-role">Data Engineer @ Accenture</div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-description">
+                            Large-scale digital transformation migrating legacy COBOL systems to SAP S/4HANA for global insurance leader.
+                        </div>
+                        <div class="project-impact">
+                            ✨ 40% data retrieval improvement | 35% decision accuracy increase | 40% manual review reduction
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">SAP BODS</span>
+                            <span class="tech-tag">XGBoost</span>
+                            <span class="tech-tag">HANA</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <svg class="arrows-connector" viewBox="0 0 150 300" preserveAspectRatio="none">
+                    <path class="arrow-1" stroke-dasharray="200" d="M 10 150 L 125 75" stroke="#1a7a94" stroke-width="18" fill="none" stroke-linecap="round"/>
+                    <polygon class="arrow-1" points="140,60 125,75 130,65 125,80" fill="#1a7a94"/>
+                    <path class="arrow-2" stroke-dasharray="200" d="M 10 150 L 125 150" stroke="#6d52a8" stroke-width="18" fill="none" stroke-linecap="round"/>
+                    <polygon class="arrow-2" points="140,150 115,135 125,150 115,165" fill="#6d52a8"/>
+                    <path class="arrow-3" stroke-dasharray="200" d="M 10 150 L 125 225" stroke="#5039a8" stroke-width="18" fill="none" stroke-linecap="round"/>
+                    <polygon class="arrow-3" points="140,240 125,225 130,235 125,220" fill="#5039a8"/>
+                </svg>
+
+                <div class="project-labels">
+                    <div class="label-box">
+                        <div class="label-title">The Problem</div>
+                        <div class="label-detail">Legacy COBOL systems slow; 14M+ financial records need migration to S/4HANA</div>
+                    </div>
+                    <div class="label-box">
+                        <div class="label-title">What I built and how</div>
+                        <div class="label-detail">SAP BODS ETL pipelines + XGBoost ML models + 155 batch job orchestration</div>
+                    </div>
+                    <div class="label-box">
+                        <div class="label-title">Key impact</div>
+                        <div class="label-detail">40% data retrieval improvement | 35% accuracy increase | Zero data loss</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card-with-arrows">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">🚗 Autonomous Racing Car</div>
+                        <div class="project-role">Autonomous Software Engineer @ Monash</div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-description">
+                            Computer vision and ML replacement for LIDAR systems on driverless racing car M23, using ROS tools.
+                        </div>
+                        <div class="project-impact">
+                            ✨ Vision-based perception system | Real-time processing | Motion control integration
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">ROS</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Computer Vision</span>
+                        </div>
+                    </div>
+                </div>
+
+                <svg class="arrows-connector" viewBox="0 0 150 300" preserveAspectRatio="none">
+                    <path class="arrow-1" stroke-dasharray="200" d="M 10 150 L 125 75" stroke="#1a7a94" stroke-width="18" fill="none" stroke-linecap="round"/>
+                    <polygon class="arrow-1" points="140,60 125,75 130,65 125,80" fill="#1a7a94"/>
+                    <path class="arrow-2" stroke-dasharray="200" d="M 10 150 L 125 150" stroke="#6d52a8" stroke-width="18" fill="none" stroke-linecap="round"/>
+                    <polygon class="arrow-2" points="140,150 115,135 125,150 115,165" fill="#6d52a8"/>
+                    <path class="arrow-3" stroke-dasharray="200" d="M 10 150 L 125 225" stroke="#5039a8" stroke-width="18" fill="none" stroke-linecap="round"/>
+                    <polygon class="arrow-3" points="140,240 125,225 130,235 125,220" fill="#5039a8"/>
+                </svg>
+
+                <div class="project-labels">
+                    <div class="label-box">
+                        <div class="label-title">The Problem</div>
+                        <div class="label-detail">LIDAR systems expensive, inaccurate during rain, need CV-based alternative for real-time perception</div>
+                    </div>
+                    <div class="label-box">
+                        <div class="label-title">What I built and how</div>
+                        <div class="label-detail">Computer vision pipeline with OpenCV + ML models + ROS integration for motion control</div>
+                    </div>
+                    <div class="label-box">
+                        <div class="label-title">Key impact</div>
+                        <div class="label-detail">Real-time perception | Low-latency processing | Seamless ROS integration</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card-with-arrows">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">🏠 SmartAttendance</div>
+                        <div class="project-role">ML Engineer @ College</div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-description">
+                            Automated attendance system using face recognition to eliminate manual roll calls in educational settings.
+                        </div>
+                        <div class="project-impact">
+                            ✨ Real-time detection | Instant attendance logging | Zero manual intervention
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">ML</span>
+                            <span class="tech-tag">Face Detection</span>
+                        </div>
+                        <button class="demo-btn" onclick="openDemoModal('Face_Recognition_2017.mp4')">▶ Demo</button>
+                    </div>
+                </div>
+
+                <svg class="arrows-connector" viewBox="0 0 150 300" preserveAspectRatio="none">
+                    <path class="arrow-1" stroke-dasharray="200" d="M 10 150 L 125 75" stroke="#1a7a94" stroke-width="18" fill="none" stroke-linecap="round"/>
+                    <polygon class="arrow-1" points="140,60 125,75 130,65 125,80" fill="#1a7a94"/>
+                    <path class="arrow-2" stroke-dasharray="200" d="M 10 150 L 125 150" stroke="#6d52a8" stroke-width="18" fill="none" stroke-linecap="round"/>
+                    <polygon class="arrow-2" points="140,150 115,135 125,150 115,165" fill="#6d52a8"/>
+                    <path class="arrow-3" stroke-dasharray="200" d="M 10 150 L 125 225" stroke="#5039a8" stroke-width="18" fill="none" stroke-linecap="round"/>
+                    <polygon class="arrow-3" points="140,240 125,225 130,235 125,220" fill="#5039a8"/>
+                </svg>
+
+                <div class="project-labels">
+                    <div class="label-box">
+                        <div class="label-title">The Problem</div>
+                        <div class="label-detail">Manual attendance rollcalls time-consuming and prone to proxy in classroom</div>
+                    </div>
+                    <div class="label-box">
+                        <div class="label-title">What I built and how</div>
+                        <div class="label-detail">Face detection using OpenCV + Python ML pipeline + instant database logging</div>
+                    </div>
+                    <div class="label-box">
+                        <div class="label-title">Key impact</div>
+                        <div class="label-detail">Real-time detection | Instant logging | Zero manual intervention</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card-with-arrows">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">📄 Invoice Automation</div>
+                        <div class="project-role">Current Project 2026</div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-description">
+                            End-to-end automation converting handwritten invoices to database entries using OCR and image processing.
+                        </div>
+                        <div class="project-impact">
+                            ✨ Image to Text conversion | Automated DB insertion | Zero manual data entry
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">GCP</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
+                        <button class="demo-btn" onclick="openDemoModal('Invoice_Processing_Demo.mp4')">▶ Demo</button>
+                    </div>
+                </div>
+
+                <svg class="arrows-connector" viewBox="0 0 150 300" preserveAspectRatio="none">
+                    <path class="arrow-1" stroke-dasharray="200" d="M 10 150 L 125 75" stroke="#1a7a94" stroke-width="18" fill="none" stroke-linecap="round"/>
+                    <polygon class="arrow-1" points="140,60 125,75 130,65 125,80" fill="#1a7a94"/>
+                    <path class="arrow-2" stroke-dasharray="200" d="M 10 150 L 125 150" stroke="#6d52a8" stroke-width="18" fill="none" stroke-linecap="round"/>
+                    <polygon class="arrow-2" points="140,150 115,135 125,150 115,165" fill="#6d52a8"/>
+                    <path class="arrow-3" stroke-dasharray="200" d="M 10 150 L 125 225" stroke="#5039a8" stroke-width="18" fill="none" stroke-linecap="round"/>
+                    <polygon class="arrow-3" points="140,240 125,225 130,235 125,220" fill="#5039a8"/>
+                </svg>
+
+                <div class="project-labels">
+                    <div class="label-box">
+                        <div class="label-title">The Problem</div>
+                        <div class="label-detail">Manual invoice data entry from handwritten/scanned docs; high error rates and slow processing</div>
+                    </div>
+                    <div class="label-box">
+                        <div class="label-title">What I built and how</div>
+                        <div class="label-detail">OCR + image processing + Python automation + PostgreSQL for intelligent data extraction</div>
+                    </div>
+                    <div class="label-box">
+                        <div class="label-title">Key impact</div>
+                        <div class="label-detail">Image to text conversion | Automated DB insertion | Zero manual data entry</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Skills I Gained by <span class="gradient">Projects</span></h2>
+        <p class="section-subtitle">A comprehensive toolkit spanning AI/ML frameworks, data engineering, cloud platforms, and modern development practices</p>
+        
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>🤖 AI/ML & LLMs</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">RAG</span>
+                    <span class="skill-tag">LangChain</span>
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">Scikit-learn</span>
+                    <span class="skill-tag">XGBoost</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>💾 Data Engineering</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">SAP HANA</span>
+                    <span class="skill-tag">SAP BODS</span>
+                    <span class="skill-tag">ETL/ELT</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Pandas</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>☁️ Cloud & DevOps</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">AWS Lambda</span>
+                    <span class="skill-tag">GCP</span>
+                    <span class="skill-tag">Azure</span>
+                    <span class="skill-tag">Jenkins CI/CD</span>
+                    <span class="skill-tag">Docker</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>🛠️ Development Tools</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Control-M</span>
+                    <span class="skill-tag">MLflow</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>🎯 Computer Vision & NLP</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">OpenCV</span>
+                    <span class="skill-tag">OCR</span>
+                    <span class="skill-tag">YOLO</span>
+                    <span class="skill-tag">Mask R-CNN</span>
+                    <span class="skill-tag">NLP</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>📊 Methodologies</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Agile/Scrum</span>
+                    <span class="skill-tag">Data Governance</span>
+                    <span class="skill-tag">Technical Docs</span>
+                    <span class="skill-tag">Domain-Driven Design</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2 class="section-title">Experience & <span class="gradient">Achievements</span></h2>
+        <p class="section-subtitle">A track record of driving measurable impact across AI, data engineering, and automation</p>
+        
+        <div class="experience-timeline">
+            <div class="experience-item">
+                <div class="experience-title">AI Engineer</div>
+                <div class="experience-company">A8 Consulting Pty Ltd, Melbourne</div>
+                <div class="experience-date">June 2025 – Present</div>
+                <div class="experience-description">
+                    Building production-grade RAG pipelines and AI solutions for enterprise clients.
+                </div>
+                <ul>
+                    <li>End-to-End RAG Pipeline: Architected production-grade retrieval system transforming 1,500+ unstructured PDFs into searchable vector database using Tesseract OCR, ChromaDB, and LangChain.</li>
+                    <li>LLM Integration: Integrated Azure OpenAI GPT-4 with ChromaDB semantic search for context-aware manual lookup and error-code interpretation across appliance documentation.</li>
+                    <li>Data Quality: Optimized retrieval accuracy to 75% through OCR refinement and feature engineering workflows, ensuring high-fidelity LLM inputs.</li>
+                    <li>Business Impact: Reduced manual lookup time by 80%, delivering 30+ hours of weekly operational savings by automating support queries.</li>
+                    <li>Production Deployment: Transitioned prototype to production; currently under evaluation for accuracy, usability, and workflow integration.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-title">Data Engineer</div>
+                <div class="experience-company">Accenture, Remote (US)</div>
+                <div class="experience-date">June 2022 – July 2023</div>
+                <div class="experience-description">
+                    Led digital transformation for global insurance leader, migrating legacy systems to SAP S/4HANA.
+                </div>
+                <ul>
+                    <li>Engineered complex ETL orchestration mapping COBOL structures to SAP schemas, reducing delays by 40%</li>
+                    <li>Built XGBoost Eligibility Engine improving decision accuracy by 35% and reducing reviews by 40%</li>
+                    <li>Developed high-concurrency reporting pipeline replacing batch processes with live dashboards</li>
+                    <li>Implemented automated PII/SPI masking ensuring strict data governance compliance</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-title">Assistant Data Engineer</div>
+                <div class="experience-company">Tata Consultancy Services, Remote (India)</div>
+                <div class="experience-date">January 2021 – June 2022</div>
+                <div class="experience-description">
+                    Managed technical migration of TATA Group's sales infrastructure from SAP ECC to S/4HANA.
+                </div>
+                <ul>
+                    <li>Cut data processing time from 2.5 hours to 40 minutes by optimizing 150+ HANA Calculation Views</li>
+                    <li>Orchestrated 30+ error-free production deployments using Jenkins CI/CD pipelines</li>
+                    <li>Proactively migrated Talend ETL jobs to BODS, saving 3 months of future workload</li>
+                    <li>Trained 4 team members to manage streamlined workflows built in production</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-title">Master of Artificial Intelligence</div>
+                <div class="experience-company">Monash University, Melbourne</div>
+                <div class="experience-date">July 2023 – August 2025</div>
+                <div class="experience-description">
+                    Advanced studies in machine learning, computer vision, reinforcement learning, and NLP with real-world projects.
+                </div>
+                <ul>
+                    <li>Led ArthritEase team building health platform with generative AI and 76% accurate prediction models</li>
+                    <li>Developed autonomous racing car perception system for driverless vehicle competition</li>
+                    <li>Conducted research on AI applications solving real-world problems while adhering to MLOps principles</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact-section">
+            <h2 class="section-title">Get in <span class="gradient">Touch</span></h2>
+            <p class="section-subtitle">I'm always excited to connect with fellow AI enthusiasts, potential collaborators, and employers. Whether it's a project idea, technical discussion, or opportunity, I'd love to hear from you!</p>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-label">Email</div>
+                    <a href="mailto:sdolly2121@gmail.com">sdolly2121@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">Phone</div>
+                    <a href="tel:0466133802">0466133802</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">LinkedIn</div>
+                    <a href="https://www.linkedin.com/in/dollys" target="_blank">linkedin.com/in/dollys</a>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem;">
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">I typically respond within 24 hours. For urgent matters, reach out via email or LinkedIn.</p>
+                <a href="mailto:sdolly2121@gmail.com" class="btn btn-primary">Start a Conversation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Dolly Sahu. Building intelligent solutions with AI & Data Engineering. Based in Melbourne, VIC.</p>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Prevent scroll to hash on page load
+        if (location.hash) {
+            window.scrollTo(0, 0);
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation for cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-card, .project-card, .experience-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Demo Modal Functions
+        function openDemoModal(videoFile) {
+            console.log('Opening demo modal with file:', videoFile);
+            const modal = document.getElementById('demoModal');
+            const videoElement = document.getElementById('demoVideo');
+            
+            if (!modal) {
+                console.error('Modal element not found!');
+                return;
+            }
+            if (!videoElement) {
+                console.error('Video element not found!');
+                return;
+            }
+            
+            videoElement.src = videoFile;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            
+            // Auto-play the video
+            videoElement.play().catch(function(error) {
+                console.log('Auto-play prevented:', error);
+            });
+            
+            console.log('Modal opened successfully - video playing');
+        }
+
+        function closeDemoModal() {
+            console.log('Closing demo modal');
+            const modal = document.getElementById('demoModal');
+            const videoElement = document.getElementById('demoVideo');
+            
+            if (videoElement) {
+                videoElement.pause();
+                videoElement.src = '';
+            }
+            if (modal) {
+                modal.style.display = 'none';
+            }
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside the video
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('demoModal');
+            if (modal && event.target === modal) {
+                closeDemoModal();
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeDemoModal();
+            }
+        });
+
+        // Load profile image from uploaded file
+        // This will be replaced with actual image when you run it locally
+
+    </script>
+</body>
+</html>
