@@ -647,6 +647,74 @@
             }
         }
 
+        /* Company Logos Section */
+        .company-logos-section {
+            padding: 2rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .company-logos-title {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .company-logos-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .company-logo-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .company-logo-item:hover {
+            opacity: 1;
+            transform: translateY(-5px);
+        }
+
+        .company-logo-item img {
+            height: 50px;
+            width: auto;
+            max-width: 140px;
+            object-fit: contain;
+            filter: grayscale(30%);
+            transition: filter 0.3s ease;
+        }
+
+        .company-logo-item:hover img {
+            filter: grayscale(0%);
+        }
+
+        .company-logo-item span {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .company-logos-row {
+                gap: 2rem;
+            }
+            .company-logo-item img {
+                height: 40px;
+                max-width: 100px;
+            }
+        }
+
         /* Expertise Section */
         .expertise-section {
             padding: 5rem 5%;
@@ -1545,6 +1613,25 @@
         </div>
     </section>
 
+    <!-- Company Logos Section -->
+    <section class="company-logos-section">
+        <p class="company-logos-title">Trusted Experience With</p>
+        <div class="company-logos-row">
+            <div class="company-logo-item">
+                <img src="A8_consultancy.png" alt="A8 Consulting">
+            </div>
+            <div class="company-logo-item">
+                <img src="Accenture-logo.png" alt="Accenture">
+            </div>
+            <div class="company-logo-item">
+                <img src="tcs_logo.jpg" alt="Tata Consultancy Services">
+            </div>
+            <div class="company-logo-item">
+                <img src="Grad-girl-logo.png" alt="GradGirls Tech">
+            </div>
+        </div>
+    </section>
+
     <!-- Areas of Expertise Section -->
     <section id="expertise" class="expertise-section">
         <h2 class="section-title">Areas of <span class="gradient">Expertise</span></h2>
@@ -1998,6 +2085,19 @@
             </div>
 
             <div class="experience-item">
+                <div class="experience-title">OTD Volunteer</div>
+                <div class="experience-company">GradGirls - Women 4 STEM, Melbourne</div>
+                <div class="experience-date">January 2026 – Present</div>
+                <div class="experience-description">
+                    Supporting women-in-tech initiatives partnered with 25+ leading Australian companies including Liberty Financial.
+                </div>
+                <ul>
+                    <li>Provide on-the-day support to moderate live chat, track attendance, escalate participant questions to speakers or MCs, and handle basic troubleshooting.</li>
+                    <li>Supporting event coordination and community building initiatives for a women-in-tech program partnered with 25+ leading Australian companies.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
                 <div class="experience-title">Data Engineer</div>
                 <div class="experience-company">Accenture, Remote (US)</div>
                 <div class="experience-date">June 2022 – July 2023</div>
@@ -2052,7 +2152,7 @@
             <div class="contact-grid">
                 <div class="contact-item">
                     <div class="contact-label">Email</div>
-                    <a href="mailto:sdolly2121@gmail.com">sdolly2121@gmail.com</a>
+                    <a href="/cdn-cgi/l/email-protection#b1c2d5deddddc883808380f1d6dcd0d8dd9fd2dedc"><span class="__cf_email__" data-cfemail="6a190e05060613585b585b2a0d070b030644090507">[email&#160;protected]</span></a>
                 </div>
                 <div class="contact-item">
                     <div class="contact-label">Phone</div>
@@ -2066,7 +2166,7 @@
 
             <div style="margin-top: 3rem;">
                 <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">I typically respond within 24 hours. For urgent matters, reach out via email or LinkedIn.</p>
-                <a href="mailto:sdolly2121@gmail.com" class="btn btn-primary">Start a Conversation</a>
+                <a href="/cdn-cgi/l/email-protection#e69582898a8a9fd4d7d4d7a6818b878f8ac885898b" class="btn btn-primary">Start a Conversation</a>
             </div>
         </div>
     </section>
@@ -2076,7 +2176,7 @@
         <p>&copy; 2026 Dolly Sahu. Building intelligent solutions with AI & Data Engineering. Based in Melbourne, VIC.</p>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Mobile Menu Functions
         function toggleMenu() {
             const menu = document.getElementById('navMenu');
@@ -2200,16 +2300,4 @@
         window.addEventListener('click', function(event) {
             const modal = document.getElementById('demoModal');
             if (modal && event.target === modal) {
-                closeDemoModal();
-            }
-        });
-
-        // Close modal with Escape key
-        window.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeDemoModal();
-            }
-        });
-    </script>
-</body>
-</html>
+     
